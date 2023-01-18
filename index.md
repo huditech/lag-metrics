@@ -13,3 +13,4 @@ a consumer group. Event Hubs provide no built-in metric for monitoring this lag.
 `event-hub-lag-metrics` bridges this gap and makes lag metrics available in Azure Monitor / Application
 Insights. Based on these metrics, you can define alerting rules, such as thresholds for when the lag 
 exceeds a critical value.
+
