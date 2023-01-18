@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://example.com/sitemap.xml.gz
+Sitemap: https://huditech.github.io/event-hub-lag-metrics/sitemap.xml.gz
