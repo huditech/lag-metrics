@@ -1,6 +1,6 @@
 input: .
 output: .retype
-url: https://example.com
+url: https://huditech.github.io/event-hub-lag-metrics
 branding:
   title: Event Hub Lag Metrics
   label: Docs
