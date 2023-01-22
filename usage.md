@@ -6,7 +6,7 @@ The following metrics are published to Application Insights:
 
 ## Lag by Topic, Consumer Group and Partition
 
-The name of the metrics is `Event Hub Partition Lag`. The value of the metric is the number
+The name of the metric is `Event Hub Partition Lag`. The value of the metric is the number
 of messages that have not yet been processed in the context of a certain event hub, partition and consumer
 group.
 
@@ -34,7 +34,7 @@ customMetrics
 
 ## Lag by Topic and Consumer Group
 
-The name of the metrics is `Event Hub Lag`. The value of the metric is the number
+The name of the metric is `Event Hub Lag`. The value of the metric is the number
 of messages that have not yet been processed in the context of a certain event hub and consumer
 group.  The values are already summed up over all partitions of the Event Hub. This level of
 detail is usually sufficient, as the overall lag across all partitions is most relevant.
