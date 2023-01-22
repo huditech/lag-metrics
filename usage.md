@@ -25,8 +25,8 @@ The lag for a particular Event Hub and Consumer Group can be extracted using the
 customMetrics
 | where name == 'Event Hub Consumer Lag'
 | extend eventHub=tostring(customDimensions['Event Hub'])
-| extend tostring(consumerGroup=customDimensions['Consumer Group'])
-| extend tostring(partitionId=customDimensions['Partition Id'])
+| extend consumerGroup=tostring(customDimensions['Consumer Group'])
+| extend partitionId=tostring(customDimensions['Partition Id'])
 | where consumerGroup == '$Default' and eventHub == 'example-event-hub'
 | summarize lag=sum(value) by bin(timestamp, 1m)
 | order by timestamp desc
