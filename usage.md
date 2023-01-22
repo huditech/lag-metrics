@@ -28,7 +28,8 @@ customMetrics
 | extend tostring(consumerGroup=customDimensions['Consumer Group'])
 | extend tostring(partitionId=customDimensions['Partition Id'])
 | where consumerGroup == '$Default' and eventHub == 'example-event-hub'
-| summarize lag=sum(value) by timestamp
+| summarize lag=sum(value) by bin(timestamp, 1m)
+| order by timestamp desc
 ```
 
 ## Lag by Topic and Consumer Group
@@ -43,5 +44,3 @@ Custom dimensions of this metric are:
 * `Event Hub Namespace`: Name of the Event Hub Namespace.
 * `Event Hub`: Name of the Event Hub.
 * `Consumer Group`: Name of the consumer group.
-
-## Viewing 

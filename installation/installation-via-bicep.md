@@ -3,7 +3,8 @@ order: 90
 label: Installation via Bicep
 ---
 
-The following snippet installs _event-hub-lag-metrics_ via [Bicep](https://github.com/Azure/bicep).
+The following snippet installs _event-hub-lag-metrics_ via [Bicep](https://github.com/Azure/bicep). You can find
+a minimal, but complete example in a [sample repo on GitHub](https://github.com/huditech/event-hub-lag-metrics-sample).
 
 ```bicep
 resource managedApp 'Microsoft.Solutions/applications@2021-07-01' = {
