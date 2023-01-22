@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/event-hub-lag-metrics">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.727656125666">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.727661927152">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -31,11 +31,12 @@
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/event-hub-lag-metrics/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../resources/css/retype.css?v=2.4.0.727656125666" rel="stylesheet" />
+    <link href="../../resources/css/retype.css?v=2.4.0.727661927152" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.727656125666" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.727661927152" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.727656125666" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.727661927152" data-turbo-eval="false" defer></script>
+    <script id="prism-js" type="text/javascript" src="../../resources/js/prism.js?v=2.4.0.727661927152" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -175,7 +176,7 @@
 </doc-anchor-target>
 <p>The following snippet installs <em>event-hub-lag-metrics</em> via <a href="https://github.com/Azure/bicep">Bicep</a>.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">resource managedApp 'Microsoft.Solutions/applications@2021-07-01' = {
+<pre class="language-bicep"><code v-pre class="language-bicep">resource managedApp 'Microsoft.Solutions/applications@2021-07-01' = {
   name: 'event-hub-lag-metrics'
   kind: 'marketplace'
   plan: {
@@ -215,7 +216,7 @@ the connection strings.</p>
     </h3>
 </doc-anchor-target>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">// This connection string is used as input for event-hub-lag-metrics
+<pre class="language-bicep"><code v-pre class="language-bicep">// This connection string is used as input for event-hub-lag-metrics
 var eventHubConnectionString = listKeys(eventHubs::authRule.id, eventHubs::authRule.apiVersion).primaryConnectionString
 
 resource eventHubs 'Microsoft.EventHub/namespaces@2021-06-01-preview' = {
@@ -259,7 +260,7 @@ resource eventHubs 'Microsoft.EventHub/namespaces@2021-06-01-preview' = {
     </h3>
 </doc-anchor-target>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">// This connection string is used as input for event-hub-lag-metrics
+<pre class="language-bicep"><code v-pre class="language-bicep">// This connection string is used as input for event-hub-lag-metrics
 var storageConnectionString = 'DefaultEndpointsProtocol=https;AccountName=${storageName};AccountKey=${storageKey};EndpointSuffix=${environment().suffixes.storage}'
 
 resource storageAccount 'Microsoft.Storage/storageAccounts@2021-04-01' = {
@@ -287,7 +288,7 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2021-04-01' = {
     </h3>
 </doc-anchor-target>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">resource appInsights 'Microsoft.Insights/components@2020-02-02' = {
+<pre class="language-bicep"><code v-pre class="language-bicep">resource appInsights 'Microsoft.Insights/components@2020-02-02' = {
   name: applicationInsightsName
   kind: 'web'
   location: location
@@ -362,6 +363,6 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2021-04-01' = {
 
     <div id="docs-overlay-target"></div>
 
-    <script>window.__DOCS__ = { "title": "Installation via Bicep", level: 2, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false }</script>
+    <script>window.__DOCS__ = { "title": "Installation via Bicep", level: 2, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
 </body>
 </html>
