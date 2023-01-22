@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/event-hub-lag-metrics">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.727664471396">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.727728629042">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -31,12 +31,12 @@
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/event-hub-lag-metrics/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../resources/css/retype.css?v=2.4.0.727664471396" rel="stylesheet" />
+    <link href="../resources/css/retype.css?v=2.4.0.727728629042" rel="stylesheet" />
 
-    <script type="text/javascript" src="../resources/js/config.js?v=2.4.0.727664471396" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../resources/js/config.js?v=2.4.0.727728629042" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../resources/js/lunr.js?v=2.4.0.727664471396" data-turbo-eval="false" defer></script>
-    <script id="prism-js" type="text/javascript" src="../resources/js/prism.js?v=2.4.0.727664471396" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../resources/js/lunr.js?v=2.4.0.727728629042" data-turbo-eval="false" defer></script>
+    <script id="prism-js" type="text/javascript" src="../resources/js/prism.js?v=2.4.0.727728629042" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -181,7 +181,7 @@
         <span>Lag by Topic, Consumer Group and Partition</span>
     </h2>
 </doc-anchor-target>
-<p>The name of the metrics is <code v-pre>Event Hub Partition Lag</code>. The value of the metric is the number
+<p>The name of the metric is <code v-pre>Event Hub Partition Lag</code>. The value of the metric is the number
 of messages that have not yet been processed in the context of a certain event hub, partition and consumer
 group.</p>
 <p>Custom dimensions of this metric are:</p>
@@ -197,8 +197,8 @@ group.</p>
 <pre class="language-kusto"><code v-pre class="language-kusto">customMetrics
 | where name == 'Event Hub Consumer Lag'
 | extend eventHub=tostring(customDimensions['Event Hub'])
-| extend tostring(consumerGroup=customDimensions['Consumer Group'])
-| extend tostring(partitionId=customDimensions['Partition Id'])
+| extend consumerGroup=tostring(customDimensions['Consumer Group'])
+| extend partitionId=tostring(customDimensions['Partition Id'])
 | where consumerGroup == '$Default' and eventHub == 'example-event-hub'
 | summarize lag=sum(value) by bin(timestamp, 1m)
 | order by timestamp desc</code></pre>
@@ -209,7 +209,7 @@ group.</p>
         <span>Lag by Topic and Consumer Group</span>
     </h2>
 </doc-anchor-target>
-<p>The name of the metrics is <code v-pre>Event Hub Lag</code>. The value of the metric is the number
+<p>The name of the metric is <code v-pre>Event Hub Lag</code>. The value of the metric is the number
 of messages that have not yet been processed in the context of a certain event hub and consumer
 group.  The values are already summed up over all partitions of the Event Hub. This level of
 detail is usually sufficient, as the overall lag across all partitions is most relevant.</p>
