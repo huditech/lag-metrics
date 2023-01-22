@@ -4,7 +4,7 @@ order: 80
 
 The following metrics are published to Application Insights:
 
-### Lag by Topic, Consumer Group and Partition
+## Lag by Topic, Consumer Group and Partition
 
 The name of the metrics is `Event Hub Partition Lag`. The value of the metric is the number
 of messages that have not yet been processed in the context of a certain event hub, partition and consumer
@@ -19,7 +19,19 @@ Custom dimensions of this metric are:
 
 This metric provides maximum flexibility as it includes information about partitions.
 
-### Lag by Topic and Consumer Group
+The lag for a particular Event Hub and Consumer Group can be extracted using the following Log Analytics / KQL query:
+
+```kusto
+customMetrics
+| where name == 'Event Hub Consumer Lag'
+| extend eventHub=tostring(customDimensions['Event Hub'])
+| extend tostring(consumerGroup=customDimensions['Consumer Group'])
+| extend tostring(partitionId=customDimensions['Partition Id'])
+| where consumerGroup == '$Default' and eventHub == 'example-event-hub'
+| summarize lag=sum(value) by timestamp
+```
+
+## Lag by Topic and Consumer Group
 
 The name of the metrics is `Event Hub Lag`. The value of the metric is the number
 of messages that have not yet been processed in the context of a certain event hub and consumer
@@ -32,3 +44,4 @@ Custom dimensions of this metric are:
 * `Event Hub`: Name of the Event Hub.
 * `Consumer Group`: Name of the consumer group.
 
+## Viewing 

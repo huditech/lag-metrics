@@ -5,7 +5,7 @@ label: Installation via Bicep
 
 The following snippet installs _event-hub-lag-metrics_ via [Bicep](https://github.com/Azure/bicep).
 
-```
+```bicep
 resource managedApp 'Microsoft.Solutions/applications@2021-07-01' = {
   name: 'event-hub-lag-metrics'
   kind: 'marketplace'
@@ -43,7 +43,7 @@ the connection strings.
 
 ### Event Hubs
 
-```
+```bicep
 // This connection string is used as input for event-hub-lag-metrics
 var eventHubConnectionString = listKeys(eventHubs::authRule.id, eventHubs::authRule.apiVersion).primaryConnectionString
 
@@ -84,7 +84,7 @@ resource eventHubs 'Microsoft.EventHub/namespaces@2021-06-01-preview' = {
 
 ### Storage Account
 
-```
+```bicep
 // This connection string is used as input for event-hub-lag-metrics
 var storageConnectionString = 'DefaultEndpointsProtocol=https;AccountName=${storageName};AccountKey=${storageKey};EndpointSuffix=${environment().suffixes.storage}'
 
@@ -109,7 +109,7 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2021-04-01' = {
 
 ### Application Insights
 
-```
+```bicep
 resource appInsights 'Microsoft.Insights/components@2020-02-02' = {
   name: applicationInsightsName
   kind: 'web'
