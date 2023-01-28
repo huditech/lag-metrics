@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/event-hub-lag-metrics">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.727728629042">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.728259320714">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -31,12 +31,12 @@
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/event-hub-lag-metrics/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../resources/css/retype.css?v=2.4.0.727728629042" rel="stylesheet" />
+    <link href="../../resources/css/retype.css?v=2.4.0.728259320714" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.727728629042" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.728259320714" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.727728629042" data-turbo-eval="false" defer></script>
-    <script id="prism-js" type="text/javascript" src="../../resources/js/prism.js?v=2.4.0.727728629042" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.728259320714" data-turbo-eval="false" defer></script>
+    <script id="prism-js" type="text/javascript" src="../../resources/js/prism.js?v=2.4.0.728259320714" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -174,6 +174,12 @@
         <span>Installation via Bicep</span>
     </h1>
 </doc-anchor-target>
+<doc-anchor-target id="writing-the-bicep-files">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#writing-the-bicep-files">#</doc-anchor-trigger>
+        <span>Writing the Bicep file(s)</span>
+    </h2>
+</doc-anchor-target>
 <p>The following snippet installs <em>event-hub-lag-metrics</em> via <a href="https://github.com/Azure/bicep">Bicep</a>. You can find
 a minimal, but complete example in a <a href="https://github.com/huditech/event-hub-lag-metrics-sample">sample repo on GitHub</a>.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
@@ -298,6 +304,20 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2021-04-01' = {
   }
 }</code></pre>
 </doc-codeblock></div>
+<doc-anchor-target id="performing-the-deployment">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#performing-the-deployment">#</doc-anchor-trigger>
+        <span>Performing the Deployment</span>
+    </h2>
+</doc-anchor-target>
+<p>You can start the deployment using:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">az deployment group create \
+  --resource-group lag-monitor-test \
+  --subscription xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx \
+  -f template.bicep </code></pre>
+</doc-codeblock></div>
+<p>More information on this can be found <a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/deploy-cli">here</a>.</p>
 
                                 
                                 <!-- Required only on API pages -->
@@ -333,6 +353,12 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2021-04-01' = {
                             <footer class="flex flex-wrap items-center justify-between">
                                 <div>
                                     <ul class="flex flex-wrap items-center text-sm">
+                                        <li>
+                                            <a class="block mr-4 py-2 text-sm whitespace-nowrap transition-colors duration-200 ease-linear text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200 md:mb-0" href="/imprint">Imprint</a>
+                                        </li>
+                                        <li>
+                                            <a class="block mr-4 py-2 text-sm whitespace-nowrap transition-colors duration-200 ease-linear text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200 md:mb-0" href="/privacy-policy">Privacy Policy</a>
+                                        </li>
                                     </ul>
                                 </div>
                                 <div class="docs-copyright py-2 text-gray-500 dark:text-dark-350 text-sm leading-relaxed"><p>© Copyright 2023. All rights reserved.</p></div>
