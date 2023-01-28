@@ -3,8 +3,9 @@ output: .retype
 url: https://huditech.github.io/event-hub-lag-metrics
 branding:
   title: Event Hub Lag Metrics
-  label: Docs
 links:
+- text: Docs
+  link: ./
 - text: Azure Marketplace
   link: https://example.com
 footer:
