@@ -2,7 +2,7 @@ input: .
 output: .retype
 url: https://huditech.github.io/event-hub-lag-metrics
 branding:
-  title: Event Hub Lag Metrics
+  title: Lag Metrics for Event Hubs
 links:
 - text: Docs
   link: ./
