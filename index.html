@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/event-hub-lag-metrics">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.728261124256">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.728262152072">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -31,11 +31,11 @@
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/event-hub-lag-metrics/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="resources/css/retype.css?v=2.4.0.728261124256" rel="stylesheet" />
+    <link href="resources/css/retype.css?v=2.4.0.728262152072" rel="stylesheet" />
 
-    <script type="text/javascript" src="resources/js/config.js?v=2.4.0.728261124256" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="resources/js/config.js?v=2.4.0.728262152072" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="resources/js/lunr.js?v=2.4.0.728261124256" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="resources/js/lunr.js?v=2.4.0.728262152072" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -186,7 +186,7 @@ In traditional messaging systems like Azure Service Bus or Apache ActiveMQ, this
 In event streaming systems like Apache Kafka or Azure Event Hubs, it&#x27;s a bit more complex. Here, the term <strong>lag</strong> describes
 the difference between what has already been written and what has been read in the scope of a consumer group.</p>
 <p>Event Hubs provide no built-in metric for monitoring this lag.</p>
-<p><em>event-hub-lag-metrics</em> bridges this gap and makes lag metrics available in Azure Monitor / Application
+<p><em>Lag Metrics</em> bridges this gap and makes lag metrics available in Azure Monitor / Application
 Insights. Based on these metrics, you can define alerting rules, such as thresholds for when the lag
 exceeds a critical value.</p>
 
