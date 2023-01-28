@@ -3,7 +3,7 @@ order: 70
 label: Defining Alerts
 ---
 
-_event-hub-lag-metrics_, as the name implies, simply publishes metrics. You can 
+_Lag Metrics_, as the name implies, simply publishes metrics. You can 
 use regular [Azure Monitor alerts](https://learn.microsoft.com/en-us/azure/azure-monitor/alerts/alerts-overview) 
 to be notified when an alert exceeds a certain threshold.
 

@@ -2,7 +2,7 @@
 order: 90
 ---
 
-_event-hub-lag-metrics_ is packaged as an [Azure Managed Application](https://learn.microsoft.com/en-us/azure/azure-resource-manager/managed-applications/overview).
+_Lag Metrics for Event Hub_ is packaged as an [Azure Managed Application](https://learn.microsoft.com/en-us/azure/azure-resource-manager/managed-applications/overview).
 It can be installed in various ways:
 
 ## Bicep

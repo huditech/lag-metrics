@@ -5,16 +5,16 @@ label: Installation via Bicep
 
 ## Writing the Bicep file(s)
 
-The following snippet installs _event-hub-lag-metrics_ via [Bicep](https://github.com/Azure/bicep). You can find
+The following snippet installs _Lag Metrics_ via [Bicep](https://github.com/Azure/bicep). You can find
 a minimal, but complete example in a [sample repo on GitHub](https://github.com/huditech/event-hub-lag-metrics-sample).
 
 ```bicep
 resource managedApp 'Microsoft.Solutions/applications@2021-07-01' = {
-  name: 'event-hub-lag-metrics'
+  name: 'lag-metrics'
   kind: 'marketplace'
   plan: {
     name: 'standard'
-    product: 'event-hub-lag-metrics'
+    product: 'lag-metrics'
     publisher: 'tbd'
     version: '1.0.0'
   }
@@ -48,7 +48,7 @@ the connection strings.
 ### Event Hubs
 
 ```bicep
-// This connection string is used as input for event-hub-lag-metrics
+// This connection string is used as input for lag-metrics
 var eventHubConnectionString = listKeys(eventHubs::authRule.id, eventHubs::authRule.apiVersion).primaryConnectionString
 
 resource eventHubs 'Microsoft.EventHub/namespaces@2021-06-01-preview' = {
@@ -89,7 +89,7 @@ resource eventHubs 'Microsoft.EventHub/namespaces@2021-06-01-preview' = {
 ### Storage Account
 
 ```bicep
-// This connection string is used as input for event-hub-lag-metrics
+// This connection string is used as input for lag-metrics
 var storageConnectionString = 'DefaultEndpointsProtocol=https;AccountName=${storageName};AccountKey=${storageKey};EndpointSuffix=${environment().suffixes.storage}'
 
 resource storageAccount 'Microsoft.Storage/storageAccounts@2021-04-01' = {

@@ -14,6 +14,6 @@ the difference between what has already been written and what has been read in t
 
 Event Hubs provide no built-in metric for monitoring this lag.
 
-_event-hub-lag-metrics_ bridges this gap and makes lag metrics available in Azure Monitor / Application
+_Lag Metrics_ bridges this gap and makes lag metrics available in Azure Monitor / Application
 Insights. Based on these metrics, you can define alerting rules, such as thresholds for when the lag 
 exceeds a critical value.
