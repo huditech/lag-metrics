@@ -10,24 +10,24 @@
     <meta name="generator" content="Retype 2.4.0">
 
     <!-- Primary Meta Tags -->
-    <title>Defining Alerts</title>
-    <meta name="title" content="Defining Alerts">
-    <meta name="description" content="event-hub-lag-metrics, as the name implies, simply publishes metrics. You can use regular Azure Monitor alerts" />
+    <title>Privacy Policy</title>
+    <meta name="title" content="Privacy Policy">
+    <meta name="description" content="Last updated January 28th, 2023" />
 
     <!-- Canonical -->
-    <link rel="canonical" href="https://huditech.github.io/event-hub-lag-metrics/defining-alerts/" />
+    <link rel="canonical" href="https://huditech.github.io/event-hub-lag-metrics/privacy-policy/" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://huditech.github.io/event-hub-lag-metrics/defining-alerts/">
-    <meta property="og:title" content="Defining Alerts">
-    <meta property="og:description" content="event-hub-lag-metrics, as the name implies, simply publishes metrics. You can use regular Azure Monitor alerts">
+    <meta property="og:url" content="https://huditech.github.io/event-hub-lag-metrics/privacy-policy/">
+    <meta property="og:title" content="Privacy Policy">
+    <meta property="og:description" content="Last updated January 28th, 2023">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://huditech.github.io/event-hub-lag-metrics/defining-alerts/">
-    <meta property="twitter:title" content="Defining Alerts">
-    <meta property="twitter:description" content="event-hub-lag-metrics, as the name implies, simply publishes metrics. You can use regular Azure Monitor alerts">
+    <meta property="twitter:url" content="https://huditech.github.io/event-hub-lag-metrics/privacy-policy/">
+    <meta property="twitter:title" content="Privacy Policy">
+    <meta property="twitter:description" content="Last updated January 28th, 2023">
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/event-hub-lag-metrics/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
@@ -36,7 +36,6 @@
     <script type="text/javascript" src="../resources/js/config.js?v=2.4.0.728260403761" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
     <script id="lunr-js" type="text/javascript" src="../resources/js/lunr.js?v=2.4.0.728260403761" data-turbo-eval="false" defer></script>
-    <script id="prism-js" type="text/javascript" src="../resources/js/prism.js?v=2.4.0.728260403761" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -174,67 +173,81 @@
                                 <div id="docs-sidebar-right-toggle"></div>
                 
                                 <!-- Page content  -->
-<doc-anchor-target id="defining-alerts" class="break-words">
+<doc-anchor-target id="privacy-policy" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#defining-alerts">#</doc-anchor-trigger>
-        <span>Defining Alerts</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#privacy-policy">#</doc-anchor-trigger>
+        <span>Privacy Policy</span>
     </h1>
 </doc-anchor-target>
-<p><em>event-hub-lag-metrics</em>, as the name implies, simply publishes metrics. You can
-use regular <a href="https://learn.microsoft.com/en-us/azure/azure-monitor/alerts/alerts-overview">Azure Monitor alerts</a>
-to be notified when an alert exceeds a certain threshold.</p>
-<p>Here is an example of defining the alert using Bicep:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bicep"><code v-pre class="language-bicep">resource highLagAlert 'Microsoft.Insights/scheduledQueryRules@2021-08-01' = {
-  name: 'eefbe064-99d8-11ed-a8fc-0242ac120002'
-  location: location
-  kind: 'LogAlert'
-  properties: {
-    displayName: 'High lag'
-    description: 'Consumer are falling behind'
-    autoMitigate: true
-    severity: 1
-    enabled: true
-    evaluationFrequency: 'PT5M'
-    windowSize: 'PT5M'
-    scopes: [
-      // Log Analytics scope example
-      '/subscriptions/YOUR_SUBSCRIPTION/resourcegroups/YOUR_RG/providers/microsoft.operationalinsights/workspaces/YOUR_WORKSPACE'
-     ]
-     skipQueryValidation: false
-     actions: {
-       actionGroups: [
-         '/subscriptions/YOUR_SUBSCRIPTION/resourceGroups/YOUR_RG/providers/Microsoft.Insights/actiongroups/YOUR_ACTION_GROU'
-     ]
-  }
-  criteria: {
-    allOf: [
-      {
-        query: 'customMetrics | where ...'
-        timeAggregation: 'Average'
-        metricMeasureColumn: 'value'
-        resourceIdColumn: null
-        operator: 'GreaterThan'
-        threshold: 500
-        dimensions: [
-          {
-            name: 'xxx'
-            operator: 'Include'
-            values: [
-              '*'
-            ]
-          }
-        ]
-        failingPeriods: {
-          minFailingPeriodsToAlert: 1
-          numberOfEvaluationPeriods: 1
-        }
-      }
-    ]
-  }
-}</code></pre>
-</doc-codeblock></div>
-<p>You can find a complete example including an alert <a href="https://github.com/huditech/event-hub-lag-metrics-sample">on GitHub</a></p>
+<p>Last updated January 28th, 2023</p>
+<p>This privacy policy describes what personal information huditech UG (haftungsbeschränkt) collects from you when you use our Azure Managed Applications, how we use this information, who we share it with and the rights that you have with regards to your personal information.</p>
+<p>Our website and applications are designed for businesses. Consequently, we do not offer services or products to be used by individuals for their personal purposes. Accordingly, we treat all personal information we collect solely in the context of their function as business representatives and not as individual persons/consumers.</p>
+<p>If you have any additional questions regarding this policy, please contact us at <a href="mailto:hello@huditech.com">hello@huditech.com</a></p>
+<doc-anchor-target id="cookies">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#cookies">#</doc-anchor-trigger>
+        <span>Cookies</span>
+    </h1>
+</doc-anchor-target>
+<p>We do not use cookies or other tracking technologies.</p>
+<doc-anchor-target id="collected-data">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#collected-data">#</doc-anchor-trigger>
+        <span>Collected Data</span>
+    </h1>
+</doc-anchor-target>
+<p>We collect your email address, company and name if you contact us for support.</p>
+<doc-anchor-target id="usage-of-data">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#usage-of-data">#</doc-anchor-trigger>
+        <span>Usage of Data</span>
+    </h1>
+</doc-anchor-target>
+<p>We use the data to communicate with you to fulfill your support requests.</p>
+<doc-anchor-target id="security">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#security">#</doc-anchor-trigger>
+        <span>Security</span>
+    </h1>
+</doc-anchor-target>
+<p>We perform reasonable and appropriate measures to protect your personal information against accidental or unlawful loss. However, no method of transmission over the Internet or storage technology is 100% secure.</p>
+<doc-anchor-target id="ccpa-privacy-rights-do-not-sell-my-personal-information">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#ccpa-privacy-rights-do-not-sell-my-personal-information">#</doc-anchor-trigger>
+        <span>CCPA Privacy Rights (Do Not Sell My Personal Information)</span>
+    </h1>
+</doc-anchor-target>
+<p>Under the CCPA, among other rights, California consumers have the right to:</p>
+<ul>
+<li>Request that a business that collects a consumer&#x27;s personal data disclose the categories and specific pieces of personal data that a business has collected about consumers.</li>
+<li>Request that a business delete any personal data about the consumer that a business has collected.</li>
+<li>Request that a business that sells a consumer&#x27;s personal data, not sell the consumer&#x27;s personal data.</li>
+</ul>
+<p>If you make a request, we have one month to respond to you. If you would like to exercise any of these rights, please contact us at <a href="mailto:hello@huditech.com">hello@huditech.com</a></p>
+<doc-anchor-target id="gdpr-data-protection-rights">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#gdpr-data-protection-rights">#</doc-anchor-trigger>
+        <span>GDPR Data Protection Rights</span>
+    </h1>
+</doc-anchor-target>
+<p>Every user is entitled to the following:</p>
+<ul>
+<li>The right to access – You have the right to request copies of your personal data.</li>
+<li>The right to rectification – You have the right to request that we correct any information you believe is inaccurate. You also have the right to request that we complete the information you believe is incomplete.</li>
+<li>The right to erasure – You have the right to request that we erase your personal data, under certain conditions.</li>
+<li>The right to restrict processing – You have the right to request that we restrict the processing of your personal data, under certain conditions.</li>
+<li>The right to object to processing – You have the right to object to our processing of your personal data, under certain conditions.</li>
+<li>The right to data portability – You have the right to request that we transfer the data that we have collected to another organization, or directly to you, under certain conditions.</li>
+</ul>
+<p>If you make a request, we have one month to respond to you. If you would like to exercise any of these rights, please contact us at <a href="mailto:hello@huditech.com">hello@huditech.com</a></p>
+<doc-anchor-target id="updates-to-this-privacy-policy">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#updates-to-this-privacy-policy">#</doc-anchor-trigger>
+        <span>Updates to this privacy policy</span>
+    </h2>
+</doc-anchor-target>
+<p>We regularly review and update this policy from time to time as our services and use of personal data evolves.
+We will update the date of this document each time it is changed.</p>
 
                                 
                                 <!-- Required only on API pages -->
@@ -242,20 +255,6 @@ to be notified when an alert exceeds a certain threshold.</p>
                             </div>
                             <footer class="clear-both">
                             
-                                <nav class="flex mt-14">
-                                    <div class="w-1/2">
-                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../usage/">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
-                                            <span>
-                                                <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                                                <span class="block mt-1">Usage</span>
-                                            </span>
-                                        </a>
-                                    </div>
-                            
-                                    <div class="w-1/2">
-                                    </div>
-                                </nav>
                             </footer>
                         </main>
                 
@@ -300,6 +299,6 @@ to be notified when an alert exceeds a certain threshold.</p>
 
     <div id="docs-overlay-target"></div>
 
-    <script>window.__DOCS__ = { "title": "Defining Alerts", level: 1, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
+    <script>window.__DOCS__ = { "title": "Privacy Policy", level: 1, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false }</script>
 </body>
 </html>
