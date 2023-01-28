@@ -3,6 +3,8 @@ order: 90
 label: Installation via Bicep
 ---
 
+## Writing the Bicep file(s)
+
 The following snippet installs _event-hub-lag-metrics_ via [Bicep](https://github.com/Azure/bicep). You can find
 a minimal, but complete example in a [sample repo on GitHub](https://github.com/huditech/event-hub-lag-metrics-sample).
 
@@ -41,6 +43,7 @@ This requires the Event Hub connection string, the storage account connection st
 the application insights connection string and the container name that holds checkpoints/offsets.
 See the following sections on how these might be defined via Bicep and how to extract
 the connection strings.
+
 
 ### Event Hubs
 
@@ -120,3 +123,16 @@ resource appInsights 'Microsoft.Insights/components@2020-02-02' = {
   }
 }
 ```
+
+## Performing the Deployment
+
+You can start the deployment using:
+
+```
+az deployment group create \
+  --resource-group lag-monitor-test \
+  --subscription xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx \
+  -f template.bicep 
+```
+
+More information on this can be found [here](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/deploy-cli).

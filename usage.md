@@ -2,7 +2,7 @@
 order: 80
 ---
 
-The following metrics are published to Application Insights:
+The following metrics are published to Application Insights
 
 ## Lag by Topic, Consumer Group and Partition
 
