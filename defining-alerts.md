@@ -59,4 +59,4 @@ resource highLagAlert 'Microsoft.Insights/scheduledQueryRules@2021-08-01' = {
   }
 }
 ```
- You can find a complete example including an alert [on GitHub](https://github.com/huditech/event-hub-lag-metrics-sample)
+ You can find a complete example including an alert [on GitHub](https://github.com/huditech/lag-metrics-sample)

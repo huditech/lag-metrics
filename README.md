@@ -1,4 +1,4 @@
-The contents of this repo is published to GitHub Pages. You can find it [here](https://huditech.github.io/event-hub-lag-metrics/).
+The contents of this repo is published to GitHub Pages. You can find it [here](https://huditech.github.io/lag-metrics/).
 
 ## Building
 

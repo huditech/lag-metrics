@@ -6,7 +6,7 @@ label: Installation via Bicep
 ## Writing the Bicep file(s)
 
 The following snippet installs _Lag Metrics_ via [Bicep](https://github.com/Azure/bicep). You can find
-a minimal, but complete example in a [sample repo on GitHub](https://github.com/huditech/event-hub-lag-metrics-sample).
+a minimal, but complete example in a [sample repo on GitHub](https://github.com/huditech/lag-metrics-sample).
 
 ```bicep
 resource managedApp 'Microsoft.Solutions/applications@2021-07-01' = {

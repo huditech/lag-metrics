@@ -3,7 +3,7 @@ order: 80
 label: Installation via az cli
 ---
 
-The following snippet installs _event-hub-lag-metrics_ via [az cli](https://github.com/Azure/azure-cli).
+The following snippet installs _lag-metrics_ via [az cli](https://github.com/Azure/azure-cli).
 
 ```
 az managedapp create \
