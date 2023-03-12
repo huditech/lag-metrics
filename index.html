@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/lag-metrics">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.731928769359">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.731939825151">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
 
     <!-- Primary Meta Tags -->
-    <title>General</title>
-    <meta name="title" content="General">
+    <title>Lag Metrics for Event Hub</title>
+    <meta name="title" content="Lag Metrics for Event Hub">
     <meta name="description" content="Azure Event Hubs are a great event streaming and messaging system, connecting consumers with producers in a decoupled manner." />
 
     <!-- Canonical -->
@@ -20,22 +20,29 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://huditech.github.io/lag-metrics/">
-    <meta property="og:title" content="General">
+    <meta property="og:title" content="Lag Metrics for Event Hub">
     <meta property="og:description" content="Azure Event Hubs are a great event streaming and messaging system, connecting consumers with producers in a decoupled manner.">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://huditech.github.io/lag-metrics/">
-    <meta property="twitter:title" content="General">
+    <meta property="twitter:title" content="Lag Metrics for Event Hub">
     <meta property="twitter:description" content="Azure Event Hubs are a great event streaming and messaging system, connecting consumers with producers in a decoupled manner.">
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/lag-metrics/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="resources/css/retype.css?v=2.4.0.731928769359" rel="stylesheet" />
+    <link href="resources/css/retype.css?v=2.4.0.731939825151" rel="stylesheet" />
 
-    <script type="text/javascript" src="resources/js/config.js?v=2.4.0.731928769359" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="resources/js/config.js?v=2.4.0.731939825151" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="resources/js/lunr.js?v=2.4.0.731928769359" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="resources/js/lunr.js?v=2.4.0.731939825151" data-turbo-eval="false" defer></script>
+
+    <style>
+    .text-xl {
+        font-size: 1.15rem;
+    }
+    </style>
+
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -173,10 +180,10 @@
                                 <div id="docs-sidebar-right-toggle"></div>
                 
                                 <!-- Page content  -->
-<doc-anchor-target id="general" class="break-words">
+<doc-anchor-target id="lag-metrics-for-event-hub" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#general">#</doc-anchor-trigger>
-        <span>General</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#lag-metrics-for-event-hub">#</doc-anchor-trigger>
+        <span>Lag Metrics for Event Hub</span>
     </h1>
 </doc-anchor-target>
 <p><a href="https://learn.microsoft.com/en-us/azure/event-hubs/event-hubs-about">Azure Event Hubs</a> are a great event streaming
@@ -185,7 +192,7 @@ and messaging system, connecting consumers with producers in a decoupled manner.
 In traditional messaging systems like Azure Service Bus or Apache ActiveMQ, this is monitored via <strong>queue sizes</strong>.
 In event streaming systems like Apache Kafka or Azure Event Hubs, it&#x27;s a bit more complex. Here, the term <strong>lag</strong> describes
 the difference between what has already been written and what has been read in the scope of a consumer group.</p>
-<p>Event Hubs provide no built-in metric for monitoring this lag.</p>
+<p>Event Hubs provide no built-in metric for monitoring this lag in the <code v-pre>Basic</code> and <code v-pre>Standard</code> SKUs.</p>
 <p><em>Lag Metrics</em> bridges this gap and makes lag metrics available in Azure Monitor / Application
 Insights. Based on these metrics, you can define alerting rules, such as thresholds for when the lag
 exceeds a critical value.</p>
@@ -254,6 +261,6 @@ exceeds a critical value.</p>
 
     <div id="docs-overlay-target"></div>
 
-    <script>window.__DOCS__ = { "title": "General", isRoot: true, level: 0, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false }</script>
+    <script>window.__DOCS__ = { "title": "Lag Metrics for Event Hub", isRoot: true, level: 0, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false }</script>
 </body>
 </html>
