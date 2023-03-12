@@ -15,7 +15,7 @@ resource managedApp 'Microsoft.Solutions/applications@2021-07-01' = {
   plan: {
     name: 'standard'
     product: 'lag-metrics'
-    publisher: 'tbd'
+    publisher: 'huditechughaftungsbeschrnkt1673457598758'
     version: '1.0.0'
   }
   location: location

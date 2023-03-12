@@ -7,7 +7,7 @@ links:
 - text: Docs
   link: ./
 - text: Azure Marketplace
-  link: https://example.com
+  link: https://azuremarketplace.microsoft.com/en-us/marketplace/apps/huditechughaftungsbeschrnkt1673457598758.lag-metrics?tab=overview
 footer:
   copyright: "&copy; Copyright {{ year }}. All rights reserved."
   links:

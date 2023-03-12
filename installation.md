@@ -22,5 +22,5 @@ Simply click on the button. It will take you to the creation screen on the Azure
 ## Azure Marketplace
 
 You can install it via the Azure Portal via the following URL:
-[Event Hub Lag Metrics on Azure Marketplace](https://azuremarketplace.microsoft.com/).
+[Lag Metrics on Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/huditechughaftungsbeschrnkt1673457598758.lag-metrics?tab=overview).
 
