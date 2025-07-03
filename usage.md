@@ -23,7 +23,7 @@ The lag for a particular Event Hub and Consumer Group can be extracted using the
 
 ```kusto
 customMetrics
-| where name == 'Event Hub Consumer Lag'
+| where name == 'Event Hub Partition Lag'
 | extend eventHub=tostring(customDimensions['Event Hub'])
 | extend consumerGroup=tostring(customDimensions['Consumer Group'])
 | extend partitionId=tostring(customDimensions['Partition Id'])
@@ -32,7 +32,7 @@ customMetrics
 | order by timestamp desc
 ```
 
-## Lag by Topic and Consumer Group
+## Lag by Event Hub and Consumer Group
 
 The name of the metric is `Event Hub Lag`. The value of the metric is the number
 of messages that have not yet been processed in the context of a certain event hub and consumer
