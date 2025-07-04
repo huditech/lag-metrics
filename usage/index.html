@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/lag-metrics">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.804899670186">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.804954121887">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.11.0">
@@ -31,12 +31,12 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../resources/css/retype.css?v=3.11.0.804899670186" rel="stylesheet">
+    <link href="../resources/css/retype.css?v=3.11.0.804954121887" rel="stylesheet">
 
-    <script data-cfasync="false" src="../resources/js/config.js?v=3.11.0.804899670186" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../resources/js/config.js?v=3.11.0.804954121887" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../resources/js/lunr.js?v=3.11.0.804899670186" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../resources/js/prism.js?v=3.11.0.804899670186" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../resources/js/lunr.js?v=3.11.0.804954121887" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../resources/js/prism.js?v=3.11.0.804954121887" defer></script>
 
     <style>
     .text-xl {
@@ -191,24 +191,24 @@
         <span>Lag by Topic, Consumer Group and Partition</span>
     </h2>
 </doc-anchor-target>
-<p>The name of the metric is <code v-pre>Event Hub Partition Lag</code>. The value of the metric is the number
+<p>The name of the metric is <code v-pre>EventHubPartitionLag</code>. The value of the metric is the number
 of messages that have not yet been processed in the context of a certain event hub, partition and consumer
 group.</p>
 <p>Custom dimensions of this metric are:</p>
 <ul>
-<li><code v-pre>Event Hub Namespace</code>: Name of the Event Hub Namespace.</li>
-<li><code v-pre>Event Hub</code>: Name of the Event Hub.</li>
-<li><code v-pre>Consumer Group</code>: Name of the consumer group.</li>
-<li><code v-pre>Partition ID</code>: Numerical identifier of the partition. If you have 4 partitions, values are 0, 1, 2 and 3.</li>
+<li><code v-pre>EventHubNamespace</code>: Name of the Event Hub Namespace.</li>
+<li><code v-pre>EventHub</code>: Name of the Event Hub.</li>
+<li><code v-pre>ConsumerGroup</code>: Name of the consumer group.</li>
+<li><code v-pre>PartitionId</code>: Numerical identifier of the partition. If you have 4 partitions, values are 0, 1, 2 and 3.</li>
 </ul>
 <p>This metric provides maximum flexibility as it includes information about partitions.</p>
 <p>The lag for a particular Event Hub and Consumer Group can be extracted using the following Log Analytics / KQL query:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-kusto"><code v-pre class="language-kusto">customMetrics
-| where name == 'Event Hub Partition Lag'
-| extend eventHub=tostring(customDimensions['Event Hub'])
-| extend consumerGroup=tostring(customDimensions['Consumer Group'])
-| extend partitionId=tostring(customDimensions['Partition Id'])
+| where name == 'EventHubPartitionLag'
+| extend eventHub=tostring(customDimensions['EventHub'])
+| extend consumerGroup=tostring(customDimensions['ConsumerGroup'])
+| extend partitionId=tostring(customDimensions['PartitionId'])
 | where consumerGroup == '$Default' and eventHub == 'example-event-hub'
 | summarize lag=sum(value) by bin(timestamp, 1m)
 | order by timestamp desc</code></pre>
@@ -219,15 +219,15 @@ group.</p>
         <span>Lag by Event Hub and Consumer Group</span>
     </h2>
 </doc-anchor-target>
-<p>The name of the metric is <code v-pre>Event Hub Lag</code>. The value of the metric is the number
+<p>The name of the metric is <code v-pre>EventHubLag</code>. The value of the metric is the number
 of messages that have not yet been processed in the context of a certain event hub and consumer
 group.  The values are already summed up over all partitions of the Event Hub. This level of
 detail is usually sufficient, as the overall lag across all partitions is most relevant.</p>
 <p>Custom dimensions of this metric are:</p>
 <ul>
-<li><code v-pre>Event Hub Namespace</code>: Name of the Event Hub Namespace.</li>
-<li><code v-pre>Event Hub</code>: Name of the Event Hub.</li>
-<li><code v-pre>Consumer Group</code>: Name of the consumer group.</li>
+<li><code v-pre>EventHubNamespace</code>: Name of the Event Hub Namespace.</li>
+<li><code v-pre>EventHub</code>: Name of the Event Hub.</li>
+<li><code v-pre>ConsumerGroup</code>: Name of the consumer group.</li>
 </ul>
 
                                 
