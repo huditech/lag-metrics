@@ -28,7 +28,7 @@ resource highLagAlert 'microsoft.insights/scheduledqueryrules@2022-06-15' = {
     criteria: {
       allOf: [
         {
-          query: 'customMetrics\n| where name == \'Event Hub Partition Lag\'\n| extend eventHub=tostring(customDimensions[\'Event Hub\'])\n| extend tostring(consumerGroup=customDimensions[\'Consumer Group\'])\n| extend tostring(partitionId=customDimensions[\'Partition Id\'])\n| summarize lag=sum(value) by timestamp, eventHub, consumerGroup\n\n'
+          query: 'customMetrics\n| where name == \'EventHubPartitionLag\'\n| extend eventHub=tostring(customDimensions[\'EventHub\'])\n| extend tostring(consumerGroup=customDimensions[\'ConsumerGroup\'])\n| extend tostring(partitionId=customDimensions[\'PartitionId\'])\n| summarize lag=sum(value) by timestamp, eventHub, consumerGroup\n\n'
           timeAggregation: 'Maximum'
           metricMeasureColumn: 'lag'
           // By specifying dimensions in this way all combinations of eventHub and consumerGroups are compared to the threshold.
