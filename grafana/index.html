@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/lag-metrics">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.805727058954">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.806177527849">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.11.0">
@@ -33,12 +33,12 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../resources/css/retype.css?v=3.11.0.805727058954" rel="stylesheet">
+    <link href="../resources/css/retype.css?v=3.11.0.806177527849" rel="stylesheet">
 
-    <script data-cfasync="false" src="../resources/js/config.js?v=3.11.0.805727058954" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../resources/js/config.js?v=3.11.0.806177527849" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../resources/js/lunr.js?v=3.11.0.805727058954" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../resources/js/prism.js?v=3.11.0.805727058954" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../resources/js/lunr.js?v=3.11.0.806177527849" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../resources/js/prism.js?v=3.11.0.806177527849" defer></script>
 
     <style>
     .text-xl {
@@ -187,6 +187,12 @@
     </h1>
 </doc-anchor-target>
 <p>In order to visualize lag metrics on a Grafana dashboard, do the following:</p>
+<doc-anchor-target id="configure-data-source">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#configure-data-source">#</doc-anchor-trigger>
+        <span>Configure Data Source</span>
+    </h2>
+</doc-anchor-target>
 <p>In your Grafana or Grafana cloud installation, add an Azure Monitor datasource (if you do not have one already):</p>
 <p><figure class="content-center">
     <img src="grafana1.png" alt="List datasources" class="rounded-image-rounded border-image-border border-image-border-width" />
@@ -199,6 +205,12 @@
 </figure>
 </p>
 <p>Now, configure the datasource as described in the <a href="https://grafana.com/docs/grafana/latest/datasources/azure-monitor/">Grafana documentation</a>.</p>
+<doc-anchor-target id="base-dashboard">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#base-dashboard">#</doc-anchor-trigger>
+        <span>Base Dashboard</span>
+    </h2>
+</doc-anchor-target>
 <p>You can now create a dashboard. Select the newly added datasource. In <code v-pre>Service</code> choose <code v-pre>Logs</code> (this is named a little confusingly).</p>
 <p><figure class="content-center">
     <img src="grafana3.png" alt="Select Logs" class="rounded-image-rounded border-image-border border-image-border-width" />
@@ -223,6 +235,70 @@
 <p><figure class="content-center">
     <img src="grafana5.png" alt="Grafana dashboard" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption">Grafana dashboard</figcaption>
+</figure>
+</p>
+<doc-anchor-target id="heat-map">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#heat-map">#</doc-anchor-trigger>
+        <span>Heat Map</span>
+    </h2>
+</doc-anchor-target>
+<p>Besides the time series visualization, a heat map can also be handy when analyzing the lag across partitions.</p>
+<p>You can create one in the following manner: Create a panel with visualization <code v-pre>Heatmap</code>.</p>
+<p>As above, select the Log Analytics Workspace and choose <code v-pre>Logs</code> as <code v-pre>Service</code>. Enter the
+following KQL query:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-kusto"><code v-pre class="language-kusto">AppMetrics
+| where Name == 'EventHubPartitionLag'
+| extend eventHub = tostring(Properties['EventHub']), consumerGroup = tostring(Properties['ConsumerGroup']), partitionId=tostring(Properties['PartitionId'])
+| where consumerGroup == '$Default' and eventHub == 'example-event-hub'
+| summarize Lag=sum(Sum) by TimeGenerated, partitionId
+| order by TimeGenerated asc</code></pre>
+</doc-codeblock></div>
+<p>Set the <code v-pre>Scheme</code> to <code v-pre>RdYlGn</code>. Set the <code v-pre>Start color scale from value</code> to 0 and <code v-pre>End color scale at value</code> to e.g. 100 (or whatever lag
+for partition you consider problematic).</p>
+<p>You should now see something like this:</p>
+<p><figure class="content-center">
+    <img src="grafana-heatmap.png" alt="Heatmap" class="rounded-image-rounded border-image-border border-image-border-width" />
+    <figcaption class="caption">Heatmap</figcaption>
+</figure>
+</p>
+<p>Now, let&#x27;s define variables for the different consumer groups and Event Hubs.
+Go to <code v-pre>Settings</code> &gt; <code v-pre>Variables</code> &gt; <code v-pre>Add Variable</code>.</p>
+<p>Select <code v-pre>Query</code> as the <code v-pre>Variable type</code>, select the correct data source. Set
+<code v-pre>consumerGroup</code> as the <code v-pre>Name</code>.</p>
+<p><figure class="content-center">
+    <img src="grafana-heatmap2.png" alt="Consumer Group Variable Settings" class="rounded-image-rounded border-image-border border-image-border-width" />
+    <figcaption class="caption">Consumer Group Variable Settings</figcaption>
+</figure>
+</p>
+<p>Use the following KQL query:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-kusto"><code v-pre class="language-kusto">AppMetrics
+| where Name == 'EventHubPartitionLag'
+| extend consumerGroup = tostring(Properties['ConsumerGroup'])
+| distinct consumerGroup</code></pre>
+</doc-codeblock></div>
+<p>Do the same for a variable <code v-pre>eventHub</code> with the following KQL query:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-kusto"><code v-pre class="language-kusto">AppMetrics
+| where Name == 'EventHubPartitionLag'
+| extend eventHub = tostring(Properties['EventHub'])
+| distinct eventHub</code></pre>
+</doc-codeblock></div>
+<p>You can now adapt the KQL query on the dashboard to use the variables:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-kusto"><code v-pre class="language-kusto">AppMetrics
+| where Name == 'EventHubPartitionLag'
+| extend eventHub = tostring(Properties['EventHub']), consumerGroup = tostring(Properties['ConsumerGroup']), partitionId=tostring(Properties['PartitionId'])
+| where consumerGroup == '$consumerGroup' and eventHub == '$eventHub'
+| summarize Lag=sum(Sum) by TimeGenerated, partitionId
+| order by TimeGenerated asc</code></pre>
+</doc-codeblock></div>
+<p>You now can select the Event Hubs and consumer groups.</p>
+<p><figure class="content-center">
+    <img src="grafana-heatmap3.png" alt="Heatmap with Variables" class="rounded-image-rounded border-image-border border-image-border-width" />
+    <figcaption class="caption">Heatmap with Variables</figcaption>
 </figure>
 </p>
 
