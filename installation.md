@@ -1,5 +1,6 @@
 ---
 order: 90
+label: Installation & Setup
 ---
 
 _Lag Metrics for Event Hub_ is packaged as an [Azure Managed Application](https://learn.microsoft.com/en-us/azure/azure-resource-manager/managed-applications/overview).

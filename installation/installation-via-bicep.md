@@ -39,10 +39,14 @@ resource managedApp 'Microsoft.Solutions/applications@2021-07-01' = {
 }
 ```
 
-This requires the Event Hub connection string, the storage account connection string, 
-the application insights connection string and the container name that holds checkpoints/offsets.
-See the bottom section on how these might be defined via Bicep and how to extract
-the connection strings.
+The input parameters are:
+
+* the connection string of the Event Hub you want to monitor
+* the connection string of the Azure Storage Account in which offsets are stored
+* the container name within the Azure Storage Account in which checkpoints/offsets are stored
+* the connection string of your Application Insights in which the metrics should be stored 
+
+See the bottom section on how these might be defined via Bicep and how to extract the connection strings.
 
 ## Bicep file for Lag Metrics (Kafka API)
 
