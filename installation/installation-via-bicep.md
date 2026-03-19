@@ -3,7 +3,7 @@ order: 90
 label: Installation via Bicep
 ---
 
-## Writing the Bicep file(s)
+## Bicep file for Lag Metrics (native Event Hub API)
 
 The following snippet installs _Lag Metrics_ via [Bicep](https://github.com/Azure/bicep). You can find
 a minimal, but complete example in a [sample repo on GitHub](https://github.com/huditech/lag-metrics-sample).
@@ -16,7 +16,7 @@ resource managedApp 'Microsoft.Solutions/applications@2021-07-01' = {
     name: 'standard'
     product: 'lag-metrics'
     publisher: 'huditechughaftungsbeschrnkt1673457598758'
-    version: '1.0.0'
+    version: '2.1.1'
   }
   location: location
   properties: {
@@ -41,9 +41,60 @@ resource managedApp 'Microsoft.Solutions/applications@2021-07-01' = {
 
 This requires the Event Hub connection string, the storage account connection string, 
 the application insights connection string and the container name that holds checkpoints/offsets.
-See the following sections on how these might be defined via Bicep and how to extract
+See the bottom section on how these might be defined via Bicep and how to extract
 the connection strings.
 
+## Bicep file for Lag Metrics (Kafka API)
+
+The following snippet installs _Lag Metrics_ via [Bicep](https://github.com/Azure/bicep) if you are using the Kafka API. 
+
+```bicep
+resource managedApp 'Microsoft.Solutions/applications@2021-07-01' = {
+  name: 'lag-metrics'
+  kind: 'marketplace'
+  plan: {
+    name: 'standard'
+    product: 'lag-metrics'
+    publisher: 'huditechughaftungsbeschrnkt1673457598758'
+    version: '2.1.1'
+  }
+  location: location
+  properties: {
+    managedResourceGroupId: '${resourceGroup().id}-eh-lag-metrics'
+    parameters: {
+      eventHubConnectionString: {
+        value: eventHubConnectionString
+      }
+      useKafkaMode: {
+        value: true
+      }
+      applicationInsightsConnectionString: {
+        value: appInsights.properties.ConnectionString
+      }
+    }
+  }
+}
+```
+
+This requires the Event Hub connection string and the application insights connection string.
+See the bottom section on how these might be defined via Bicep and how to extract
+the connection strings.
+
+
+## Performing the Deployment
+
+You can start the deployment using:
+
+```
+az deployment group create \
+  --resource-group lag-monitor-test \
+  --subscription xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx \
+  -f template.bicep 
+```
+
+More information on this can be found [here](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/deploy-cli).
+
+## For Reference: Monitored Resources
 
 ### Event Hubs
 
@@ -123,16 +174,3 @@ resource appInsights 'Microsoft.Insights/components@2020-02-02' = {
   }
 }
 ```
-
-## Performing the Deployment
-
-You can start the deployment using:
-
-```
-az deployment group create \
-  --resource-group lag-monitor-test \
-  --subscription xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx \
-  -f template.bicep 
-```
-
-More information on this can be found [here](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/deploy-cli).

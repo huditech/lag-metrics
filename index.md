@@ -17,3 +17,5 @@ Event Hubs provide no built-in metric for monitoring this lag in the `Basic` and
 _Lag Metrics_ bridges this gap and makes lag metrics available in Azure Monitor / Application
 Insights. Based on these metrics, you can define alerting rules, such as thresholds for when the lag 
 exceeds a critical value.
+
+Both the native Event Hub API and Kafka API are supported.
